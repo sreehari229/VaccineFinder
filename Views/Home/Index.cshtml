@@ -1,0 +1,29 @@
+﻿@using VaccineFinder.Models
+@model LocationState
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Total number of states is @Model.ttl1</h1>
+
+    @using (Html.BeginForm("ShowDistricts", "Home", FormMethod.Post))
+    {
+
+        <select name="st" id="st">
+            @foreach (var item in Model.states)
+            {
+                <option value="@item.state_id">@item.state_name</option>
+            }
+        </select>
+        <input type="submit" value="Select state" />
+
+    }
+
+
+
+
+
+
+
+</div>
