@@ -2,22 +2,29 @@
 @model LocationDistrict
 @{
     ViewBag.Title = "ShowDistricts";
+    string min = DateTime.Now.ToString("yyyy/MM/dd");
+    string max = DateTime.Now.AddDays(7).ToString("yyyy/MM/dd");
 }
 
-<h2>Select Distric</h2>
 
-<h1>Total number of states is @Model.ttl1</h1>
+<div class="card level-3">
+    <h2>Select Distric</h2>
 
-@using (Html.BeginForm("Showinfoloc", "Home", FormMethod.Post))
-{
+    <h1>Total number of states is @Model.ttl1</h1>
 
-    <select name="dis" id="dis">
-        @foreach (var item in Model.districts)
-        {
-            <option value="@item.district_id">@item.district_name</option>
-        }
-    </select>
-    <input type="date" min="@DateTime.Now"  name="dt" id="dt"/>
-    <input type="submit" value="Select District" />
+    @using (Html.BeginForm("Showinfoloc", "Home", FormMethod.Post))
+    {
 
-}
+        <select name="dis" id="dis" class="dropdownVF">
+            @foreach (var item in Model.districts)
+            {
+                <option value="@item.district_id">@item.district_name</option>
+            }
+        </select>
+
+
+        <input type="date" min="@min" max="max" name="dt" id="dt" value="@min"/>
+        <input type="submit" value="Find Vaccine" class="SubmitButtonVF"/>
+
+    }
+</div>

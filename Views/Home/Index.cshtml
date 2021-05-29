@@ -4,19 +4,21 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<div class="card level-3">
     <h1>Total number of states is @Model.ttl1</h1>
 
     @using (Html.BeginForm("ShowDistricts", "Home", FormMethod.Post))
     {
 
-        <select name="st" id="st">
+        <select name="st" id="st" class="dropdownVF">
             @foreach (var item in Model.states)
             {
                 <option value="@item.state_id">@item.state_name</option>
             }
         </select>
-        <input type="submit" value="Select state" />
+
+        <br>
+        <input type="submit" value="Submit" class="SubmitButtonVF"/>
 
     }
 
