@@ -1,7 +1,146 @@
-﻿
+﻿@model IEnumerable<VaccineFinder.Models.Sessions>
+
 @{
     ViewBag.Title = "Showinfoloc";
 }
 
 <h2>Showinfoloc</h2>
 
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.center_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.state_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.district_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.block_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pincode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.loclg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.from)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.to)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fee_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.session_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.available_capacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.available_capacity_dose1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.available_capacity_dose2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.min_age_limit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vaccine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.slots)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.center_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.state_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.district_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.block_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pincode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.loclg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.from)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.to)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fee_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.session_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.available_capacity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.available_capacity_dose1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.available_capacity_dose2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.min_age_limit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vaccine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.slots)
+        </td>
+    </tr>
+}
+
+</table>
