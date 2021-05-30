@@ -13,102 +13,135 @@
     }
 
 </style>
+<div>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" style="width:600px;height:50px;display:block;position:fixed;top:20px;left:200px">
+</div>
+<div>
+    @if (Model.Count() == 0)
+    {
+        <h1>No data found</h1>
+    }
+    else
+    {
 
 
-<table class="table">
-    <tr>
-        <th>
-            Center ID 
-        </th>
-        <th>
-            Name
-        </th>
-        <th>
-            Block Name
-        </th>
-        <th>
-            From
-        </th>
-        <th>
-            To
-        </th>
-        <th>
-            Fee Type
-        </th>
-        <th>
-            Fee
-        </th>
-        <th>
-            Date
-        </th>
-        <th>
-            Available Capacity
-        </th>
-        <th>
-            Dose 1 Available Capacity
-        </th>
-        <th>
-            Dose 2 Available Capacity
-        </th>
-        <th>
-            Minimum Age Limit
-        </th>
-        <th>
-            Vaccine
-        </th>
-        <th>
-            Slots
-        </th>
-    </tr>
+    <table class="table" id="myTable">
+        
+        <tr>
+            <th>
+                Center ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Block Name
+            </th>
+            <th>
+                From
+            </th>
+            <th>
+                To
+            </th>
+            <th>
+                Fee Type
+            </th>
+            <th>
+                Fee
+            </th>
+            <th>
+                Available Capacity
+            </th>
+            <th>
+                Dose 1 Available Capacity
+            </th>
+            <th>
+                Dose 2 Available Capacity
+            </th>
+            <th>
+                Minimum Age Limit
+            </th>
+            <th>
+                Vaccine
+            </th>
+            <th>
+                Slots
+            </th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.center_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.block_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.from)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.to)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fee_type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fee)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.available_capacity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.available_capacity_dose1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.available_capacity_dose2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.min_age_limit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.vaccine)
-        </td>
-        <td>
-            @foreach (var slot in item.slots)
-            {
-                <h6>@slot</h6>
-            }            
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr @if (Int16.Parse(item.available_capacity) == 0)
+            { <text> style="background: #e6001a;" </text>  }
+            else
+            { <text> style="background: #57d9a8;" </text> }>
 
-</table>
+                <td>
+                    @Html.DisplayFor(modelItem => item.center_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.block_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.from)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.to)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fee_type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fee)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.available_capacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.available_capacity_dose1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.available_capacity_dose2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.min_age_limit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vaccine)
+                </td>
+                <td>
+                    @foreach (var slot in item.slots)
+                    {
+                        <h6>@slot</h6>
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+    }
+</div>
+
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
